@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>syncell.celltraj &mdash; syncell 0.0 documentation</title>
+  <title>syncell.trajectory &mdash; syncell 0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -64,7 +64,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>syncell.celltraj</li>
+      <li>syncell.trajectory</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -73,7 +73,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for syncell.celltraj</h1><div class="highlight"><pre>
+  <h1>Source code for syncell.trajectory</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">;</span> <span class="n">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -100,7 +100,7 @@
 <span class="kn">import</span> <span class="nn">numpy.matlib</span>
 
 
-<div class="viewcode-block" id="cellTraj"><a class="viewcode-back" href="../../stubs/syncell.celltraj.cellTraj.html#syncell.celltraj.cellTraj">[docs]</a><span class="k">class</span> <span class="nc">cellTraj</span><span class="p">():</span>
+<div class="viewcode-block" id="Trajectory"><a class="viewcode-back" href="../../stubs/syncell.trajectory.Trajectory.html#syncell.trajectory.Trajectory">[docs]</a><span class="k">class</span> <span class="nc">Trajectory</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A toolset for single-cell trajectory modeling. See:</span>
 <span class="sd">    </span>
@@ -124,7 +124,7 @@
 <span class="sd">    Biorxiv 10.1101/2021.10.07.463498, 2021.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-<div class="viewcode-block" id="cellTraj.__init__"><a class="viewcode-back" href="../../stubs/syncell.celltraj.cellTraj.html#syncell.celltraj.cellTraj.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Trajectory.__init__"><a class="viewcode-back" href="../../stubs/syncell.trajectory.Trajectory.html#syncell.trajectory.Trajectory.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Work-in-progress init function. For now, just start adding attribute definitions in here.</span>
 <span class="sd">        Todo</span>
@@ -134,7 +134,7 @@
 <span class="sd">        - Reorganize these attributes into some meaningful structure</span>
 <span class="sd">        &quot;&quot;&quot;</span></div>
         
-<div class="viewcode-block" id="cellTraj.initialize"><a class="viewcode-back" href="../../api_old.html#syncell.celltraj.cellTraj.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fileSpecifier</span><span class="p">,</span><span class="n">modelName</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fileSpecifier</span><span class="p">,</span><span class="n">modelName</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a list of :class:`bluepy.blte.Service` objects representing</span>
 <span class="sd">        the services offered by the device. This will perform Bluetooth service</span>
 <span class="sd">        discovery if this has not already been done; otherwise it will return a</span>
@@ -169,9 +169,9 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">imagesExist</span><span class="o">=</span><span class="kc">True</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;problem getting images </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">imagesExist</span><span class="o">=</span><span class="kc">False</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">imagesExist</span><span class="o">=</span><span class="kc">False</span>
 
-<div class="viewcode-block" id="cellTraj.get_image_data"><a class="viewcode-back" href="../../api_old.html#syncell.celltraj.cellTraj.get_image_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_image_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_frame</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_image_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_frame</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Example function with PEP 484 type annotations.</span>
 <span class="sd">        The return type must be duplicated in the docstring to comply</span>
@@ -237,9 +237,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="o">=</span><span class="n">imgs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">msks</span><span class="o">=</span><span class="n">msks</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">timeList</span><span class="o">=</span><span class="n">timeList</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">imgfileList</span><span class="o">=</span><span class="n">imgfileList</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imgfileList</span><span class="o">=</span><span class="n">imgfileList</span>
 
-<div class="viewcode-block" id="cellTraj.get_fmask_data"><a class="viewcode-back" href="../../api_old.html#syncell.celltraj.cellTraj.get_fmask_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_fmask_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_frame</span><span class="p">):</span> <span class="c1">#get foreground masks</span>
+    <span class="k">def</span> <span class="nf">get_fmask_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n_frame</span><span class="p">):</span> <span class="c1">#get foreground masks</span>
         <span class="sd">&quot;&quot;&quot;Returns a list of :class:`bluepy.blte.Service` objects representing</span>
 <span class="sd">        the services offered by the device. This will perform Bluetooth service</span>
 <span class="sd">        discovery if this has not already been done; otherwise it will return a</span>
@@ -277,7 +277,7 @@
         <span class="k">if</span> <span class="n">fmsks</span><span class="o">.</span><span class="n">ndim</span><span class="o">!=</span><span class="mi">3</span><span class="p">:</span>
             <span class="n">fmsks</span><span class="o">=</span><span class="n">fmsks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">fmsks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">fmsks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fmsks</span><span class="o">=</span><span class="n">fmsks</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fmsks</span><span class="o">=</span><span class="n">fmsks</span>
 
     <span class="k">def</span> <span class="nf">get_frames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">numFiles</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
